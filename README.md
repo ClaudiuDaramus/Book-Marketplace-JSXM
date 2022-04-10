@@ -15,3 +15,5 @@ mvn clean jsxm:generate
 
 ### 6. Run Test Cases
 mvn clean jsxm:generate test
+
+![Un exemplu simplu care poate fi descris cu un SXM](https://cdn.discordapp.com/attachments/954740965137068115/962656748756422696/projmfis.png)
