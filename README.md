@@ -1,5 +1,7 @@
 # Book-Marketplace-JSXM
 
+### Add settings.xml to C:\Users\YOUR_USERNAME\.m2
+
 ### Compile Project
 mvn clean jsxm:compile
 
