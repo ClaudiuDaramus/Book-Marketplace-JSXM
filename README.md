@@ -4,7 +4,7 @@
 
 ### 2.Add settings.xml to C:\Users\YOUR_USERNAME\.m2
 
-### 3. ompile Project
+### 3. Compile Project
 mvn clean jsxm:compile
 
 ### 4. Run GUI
