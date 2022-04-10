@@ -1,4 +1,4 @@
-# Book-Marketplace-JSXM
+# Movie-Store-JSXM
 
 ### 1. Install Maven 3.0.5 and set it's MAVEN_HOME and add it's bin to Path
 
