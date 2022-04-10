@@ -15,6 +15,85 @@ JSXM este un tool care, odată ce primește o specificație de SXM descrisă în
 
 # Despre SXM
 
-SXM este un model bazat pe stări care poate descrie comportamentul unui sistem. În loc de simple tranziții, un SXM are funcții care primesc un input și o memorie (care este un set posibil infinit), și produc un output și memoria care poate fi schimbată. Putem considera un exemplu în care definim un SXM care descrie comportamentul unei platforme de împrumutat/cumpărat cărți:
+SXM este un model bazat pe stări care poate descrie comportamentul unui sistem. În loc de simple tranziții, un SXM are funcții care primesc un input și o memorie (care este un set posibil infinit), și produc un output și memoria care poate fi schimbată. Putem considera un exemplu în care definim un SXM care descrie comportamentul unei platforme de împrumutat/cumpărat filme:
 
-![Un exemplu simplu care poate fi descris cu un SXM](./state-machine-Movie-Store.png)
+![Un exemplu simplu care poate fi descris cu un SXM](./MovieStoreDiagram.png)
+
+# Despre SXM
+
+În exemplul arătat anterior avem o platformă în care se pot împrumuta filme. Inițial platforma este inactivă și trebuie deschisă („Go to active”). De acolo avem mai multe opțiuni:
+
+- Putem verifica dacă un film este deja împrumutat cuiva („Check if available”)
+- Putem verifica dacă un user a împrumutat deja un film („Check borrow”, un user poate avea maxim un împrumut activ)
+- Putem împrumuta un film („Borrow a movie”)
+- Putem returna un film („Return a movie”)
+
+Pentru simplitate am ales să omitem stările de eroare pentru fiecare stare în parte (de exemplu împrumutul unui film deja împrumutat altcuiva), ceea ce înseamnă că SXM-ul nostru _nu_ este complet definit.
+
+# Memoria SXM-ului dat ca exemplu
+
+Memoria în exemplul nostru este reprezentată de:
+
+- Un set de tupluri `(int, Movie)` care reprezintă „baza de date” a filmelor (id + metadata)
+- Un set de tupluri `(int, Borrower)` care reprezintă „baza de date” a userilor (id + metadata)
+
+Mai concret, `Movie` și `Borrower` sunt clase definite în Java, iar memoria în sine este formată din `Map<Integer, Movie>` și `Map<Integer, Borrower>`.
+
+# Specificația XML
+
+Clasele menționate anterior sunt acompaniate de specificații XML care descriu tranzițiile. Ca exemplu, putem lua specificația pentru `Movies`:
+```xml
+<states>
+	<state name="available"/>
+	<state name="borrowed"/>
+</states>
+
+<initialState state="available"/>
+
+<transitions>
+	<transition from="available" function="setBorrowedPF" to="borrowed"/>
+	<transition from="borrowed" function="releasePF" to="available"/>
+	<transition from="available" function="movieIsAvailablePF" to="available"/>
+	<transition from="borrowed" function="movieIsNotAvailablePF" to="borrowed"/>
+</transitions>
+```
+
+După cum se poate observa, tranzițiile sunt specificate la nivel înalt, mai jos definim și implementările pentru funcții.
+
+# Specificația XML
+
+Luăm ca exemplu funcțiile `canBorrowMoviePF` și `canNotBorrowMoviePF`:
+
+```xml
+<function name="canBorrowMoviePF" input="canBorrow" output="canBorrowOut" xsi:type="OutputFunction">
+	<effect>
+		canBorrowOut.result = true;
+	</effect>
+</function>
+		
+<function name="canNotBorrowMoviePF" input="canBorrow" output="canBorrowOut" xsi:type="OutputFunction">
+	<effect>
+		canBorrowOut.result = false;
+	</effect>
+</function>
+```
+
+Care nu fac altceva decât seteze un membru la `true`/`false`. Similar sunt definite specificațiile pentru `Movie`, `Store` și restul funcționalităților din `Borrower`, adaptate pentru cerințele fiecăreia.
+
+# Generarea de teste
+
+Putem defini și niște generatoare de input-uri pentru a permite tool-ului JSXM să ne genereze teste automat. Exemplu pentru `Borrower`:
+
+```xml
+<testinputgeneration>
+	<inputgenerator function="borrowMoviePF"> 
+		setArg(0, "newsxm:availableMovie");
+	</inputgenerator>
+	<inputgenerator function="borrowMovieNotAvailablePF"> 
+		setArg(0, "newsxm:borrowedMovie"); 
+	</inputgenerator>
+	<inputgenerator function="borrowMovieCannotBorrowPF"> 
+		setArg(0, "newsxm:availableMovie"); 
+	</inputgenerator>
+</testinputgeneration>
+```
