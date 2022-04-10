@@ -17,4 +17,4 @@ JSXM este un tool care, odată ce primește o specificație de SXM descrisă în
 
 SXM este un model bazat pe stări care poate descrie comportamentul unui sistem. În loc de simple tranziții, un SXM are funcții care primesc un input și o memorie (care este un set posibil infinit), și produc un output și memoria care poate fi schimbată. Putem considera un exemplu în care definim un SXM care descrie comportamentul unei platforme de împrumutat/cumpărat cărți:
 
-![Un exemplu simplu care poate fi descris cu un SXM](./MFIS_BOOKSTORE.png)
+![Un exemplu simplu care poate fi descris cu un SXM](./state-machine-Movie-Store.png)
