@@ -1,13 +1,13 @@
 # Book-Marketplace-JSXM
 
-# Compile Project
+### Compile Project
 mvn clean jsxm:compile
 
-# Run GUI
+### Run GUI
 mvn clean jsxm:animate-gui
 
-# Generate test cases
+### Generate test cases
 mvn clean jsxm:generate
 
-# Run Test Cases
+### Run Test Cases
 mvn clean jsxm:generate test
