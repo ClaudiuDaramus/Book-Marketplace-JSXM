@@ -97,3 +97,35 @@ Putem defini și niște generatoare de input-uri pentru a permite tool-ului JSXM
 	</inputgenerator>
 </testinputgeneration>
 ```
+
+# Exemple de teste generate
+
+```java
+@Test
+public void test_k2_3_borrowMoviePF_borrowMoviePF_borrowMovieNotAvailablePF() {
+    StoreAdapter obj = new StoreAdapter();
+    assertEquals("borrowMovieOut", obj.borrowMovie(51, 11));
+    assertEquals("borrowMovieOut", obj.borrowMovie(52, 12));
+    assertEquals("borrowMovie_NotAvailable", obj.borrowMovie(53, 11));
+}
+```
+
+Acest test este generat pentru `Store`. În particular se asigură de faptul că un user nu poate lua un film care este deja împrumutat altcuiva.
+
+# Exemple de teste generate
+
+Alt test, generat tot pentru `Store`:
+
+```java
+@Test
+public void test_k2_12_borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieNotAvailablePF() {
+    StoreAdapter obj = new StoreAdapter();
+    assertEquals("borrowMovieOut", obj.borrowMovie(51, 11));
+    assertEquals("borrowMovie_CannotBorrow", obj.borrowMovie(51, 12));
+    assertEquals("borrowMovie_NotAvailable", obj.borrowMovie(52, 11));
+}
+```
+
+Acesta se asigură de faptul că un user nu poate avea mai mult de un film și că filmul împrumutat nu poate fi împrumutat altcuiva. Practic se asigură că cererea de împrumut pentru un user care are deja un film nu va rezulta în înlocuirea filmului cu cel cerut în caz că este disponibil.
+
+Evident, testele sunt în număr mult mai mare (de ordinul zecilor pentru fiecare componentă), am prezentat doar câteva cazuri particulare din ele.
