@@ -1,0 +1,2959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<set xmlns="http://www.jsxm.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/test_set.xsd" k="2">
+  <definitions>
+    <defsxm name="availableMovie" sxm="MovieSXM" />
+    <defsxm name="borrowedMovie" sxm="MovieSXM">
+      <input name="setBorrowed" />
+    </defsxm>
+  </definitions>
+  <sequences>
+    <sequence name="returnMoviePF">
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canNotBorrowMoviePF">
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canBorrowMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canBorrowMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieNotAvailablePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieNotAvailablePF_canNotBorrowMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canBorrowMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canBorrowMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMoviePF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canBorrowMoviePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canBorrowMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMovieNotAvailablePF_canBorrowMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMoviePF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieNotAvailablePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_borrowMovieNotAvailablePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canBorrowMoviePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canBorrowMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="canBorrowMoviePF_canBorrowMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canBorrowMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canBorrowMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_returnMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_returnMoviePF_canNotBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_canBorrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canBorrowMoviePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canBorrowMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_canBorrowMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_returnMoviePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_returnMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:borrowedMovie</movie>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_returnMoviePF_canBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="canBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_returnMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovie_Error" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_canNotBorrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <movie type="sxm">newsxm:availableMovie</movie>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="canNotBorrowMoviePF" />
+        <input name="canBorrow" />
+        <output name="canBorrowOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie" />
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+  </sequences>
+</set>
+

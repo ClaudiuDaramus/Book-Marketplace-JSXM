@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://www.jsxm.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/output.xsd">
+  <call>
+    <input name="borrowMovie">
+      <borrowerId type="xs:int">53</borrowerId>
+      <movieId type="xs:int">1</movieId>
+    </input>
+    <output name="borrowMovie_Error" />
+  </call>
+  <call>
+    <input name="returnMovie">
+      <borrowerId type="xs:int">53</borrowerId>
+    </input>
+    <output name="returnMovie_Error" />
+  </call>
+  <call>
+    <input name="returnMovie">
+      <borrowerId type="xs:int">11</borrowerId>
+    </input>
+    <output name="returnMovie_Error" />
+  </call>
+</sequence>
+

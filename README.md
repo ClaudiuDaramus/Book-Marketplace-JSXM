@@ -1,13 +1,17 @@
-# Book-Marketplace-JSXM
+# Movie-Store-JSXM
 
-### Compile Project
+### 1. Install Maven 3.0.5 and set it's MAVEN_HOME and add it's bin to Path
+
+### 2.Add settings.xml to C:\\Users\\you\\.m2
+
+### 3. Compile Project
 mvn clean jsxm:compile
 
-### Run GUI
+### 4. Run GUI
 mvn clean jsxm:animate-gui
 
-### Generate test cases
+### 5. Generate test cases
 mvn clean jsxm:generate
 
-### Run Test Cases
+### 6. Run Test Cases
 mvn clean jsxm:generate test

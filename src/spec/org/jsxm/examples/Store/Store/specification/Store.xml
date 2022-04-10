@@ -1,0 +1,221 @@
+<SXM name="Store" 
+	xmlns="http://www.jsxm.org/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/specification.xsd">
+
+	<dependencies>
+		<uses sxm="Movie"/>
+		<uses sxm="Borrower"/>
+	</dependencies>
+    <!--States definition-->
+	<states>
+		<state name="initial"/>
+	</states>
+    <!--Initial State definition-->
+	<initialState state="initial"/>
+    <!--Transitions definition-->
+	<transitions>
+	<!-- SUCCESSFUL SCENARIOS -->
+		<transition from="initial" function="borrowMoviePF" to="initial"/>
+		<transition from="initial" function="returnMoviePF" to="initial"/>
+	<!-- EXCEPTIONS -->
+		<transition from="initial" function="borrowMovieNotAvailablePF" to="initial"/>
+		<transition from="initial" function="borrowMovieCannotBorrowPF" to="initial"/>
+	</transitions>
+
+	<memory>
+		<declaration> 
+			Map movies; 
+			Map borrowers; 
+		</declaration>
+		<initial> 
+			movies = new HashMap();
+			borrowers = new HashMap();
+			
+			addMovie(11);
+			addMovie(12);
+			addMovie(13);
+			addBorrower(51);
+			addBorrower(52);
+			addBorrower(53);
+		</initial>
+		<display></display>
+		
+		<javaImports> import java.util.*; </javaImports>
+
+	</memory>
+	
+	<methods>
+		private void addMovie(int movieId) {
+			MovieSXM movie = new MovieSXM();
+			movie.reset();
+			movie.setId(movieId);
+			movies.put(new Integer(movieId), movie);
+		}
+	
+		private void addBorrower(int borrowerId) {
+			BorrowerSXM borrower = new BorrowerSXM();
+			borrower.reset();
+			borrower.setId(borrowerId);
+			borrowers.put(new Integer(borrowerId), borrower);
+		}
+		private boolean movieExists(int movieId) {
+			return movies.containsKey(new Integer(movieId));
+		}
+		private boolean borrowerExists(int borrowerId) {
+			return borrowers.containsKey(new Integer(borrowerId));
+		}
+		private MovieSXM getMovieWithId(int movieId) {
+			return (MovieSXM) movies.get(new Integer(movieId));
+		}
+		private BorrowerSXM getBorrowerWithId(int borrowerId) {
+			return (BorrowerSXM) borrowers.get(new Integer(borrowerId));
+		}
+		
+		private Integer getAvailableMovieKey(boolean isAvailable) {
+			for (Map.Entry &lt; Integer, MovieSXM &gt; entry : (Set &lt; Map.Entry &lt; Integer, MovieSXM &gt;&gt;) movies.entrySet()) {
+			    Integer key = entry.getKey();
+			    MovieSXM movie = entry.getValue();
+			    if (movie.isAvailable().result == isAvailable)
+			    	return key;
+			}
+			return null;		
+		}
+		private Integer getCanBorrowBorrowerKey(boolean canBorrow) {
+			for (Map.Entry &lt; Integer, BorrowerSXM &gt; entry : (Set &lt; Map.Entry &lt; Integer, BorrowerSXM &gt;&gt;) borrowers.entrySet()) {
+			    Integer key = entry.getKey();
+			    BorrowerSXM borrower = entry.getValue();
+			    if (borrower.canBorrow().result == canBorrow)
+			    	return key;
+			}
+			return null;		
+		}
+	</methods>
+
+	<inputs>
+		<input name="borrowMovie">
+			<arg name="borrowerId" type="xs:int"/>
+			<arg name="movieId" type="xs:int"/>
+		</input>
+		<input name="returnMovie">
+			<arg name="borrowerId" type="xs:int"/>
+		</input>
+	</inputs>
+	<outputs>
+		<output name="borrowMovieOut"/>
+		<output name="returnMovieOut"/>
+	</outputs>
+	<faults>
+		<fault name="borrowMovie_NotAvailable"/>
+		<fault name="borrowMovie_CannotBorrow"/>
+	</faults>
+
+	<functions>
+		<function name="borrowMoviePF" input="borrowMovie" output="borrowMovieOut" xsi:type="OutputFunction">
+			<precondition>
+			    movieExists(borrowMovie.get_movieId()) &amp;&amp;
+			    borrowerExists(borrowMovie.get_borrowerId()) &amp;&amp;
+
+			    getMovieWithId(borrowMovie.get_movieId()).isAvailable().result &amp;&amp;
+			    getBorrowerWithId(borrowMovie.get_borrowerId()).canBorrow().result 
+			</precondition>
+			<effect> 
+				getBorrowerWithId(borrowMovie.get_borrowerId()).
+					borrowMovie(getMovieWithId(borrowMovie.get_movieId()));			
+			</effect>
+		</function>
+
+		<function name="returnMoviePF" input="returnMovie" output="returnMovieOut" xsi:type="OutputFunction">
+			<precondition>
+			    borrowerExists(returnMovie.get_borrowerId()) &amp;&amp;
+			    ! getBorrowerWithId(returnMovie.get_borrowerId()).canBorrow().result 
+			</precondition>
+			<effect>
+				getBorrowerWithId(returnMovie.get_borrowerId()).returnMovie();
+			</effect>
+		</function>
+
+		<!-- ERRORS -->
+
+		<function name="borrowMovieNotAvailablePF" input="borrowMovie" fault="borrowMovie_NotAvailable" xsi:type="FaultFunction">
+			<precondition>
+			    movieExists(borrowMovie.get_movieId()) &amp;&amp;
+			    borrowerExists(borrowMovie.get_borrowerId()) &amp;&amp;
+
+			    getBorrowerWithId(borrowMovie.get_borrowerId()).canBorrow().result &amp;&amp;
+			    !getMovieWithId(borrowMovie.get_movieId()).isAvailable().result 
+			</precondition>
+			<effect> 
+			</effect>
+		</function>
+
+		<function name="borrowMovieCannotBorrowPF" input="borrowMovie" fault="borrowMovie_CannotBorrow" xsi:type="FaultFunction">
+			<precondition>
+			    movieExists(borrowMovie.get_movieId()) &amp;&amp;
+			    borrowerExists(borrowMovie.get_borrowerId()) &amp;&amp;
+
+			    getMovieWithId(borrowMovie.get_movieId()).isAvailable().result &amp;&amp;
+			    ! getBorrowerWithId(borrowMovie.get_borrowerId()).canBorrow().result 
+			</precondition>
+			<effect> 
+			</effect>
+		</function>
+
+	</functions>
+
+	<testinputgeneration>
+		<inputgenerator function="borrowMoviePF"> 
+			Integer movieKey = getAvailableMovieKey(true);
+			Integer borrowerKey = getCanBorrowBorrowerKey(true);
+			
+			if (movieKey != null &amp;&amp; borrowerKey != null ) {
+				int borrower = borrowerKey.intValue();
+				int movie = movieKey.intValue();
+				setArg(0, ""+borrower);
+				setArg(1, ""+movie);
+			}
+		</inputgenerator>
+
+		<inputgenerator function="returnMoviePF">
+			Integer borrowerKey = getCanBorrowBorrowerKey(false);
+			
+			if (borrowerKey != null ) {
+				int borrower = borrowerKey.intValue();
+				setArg(0, ""+borrower);
+			}
+		</inputgenerator>
+		
+		<inputgenerator function="borrowMovieNotAvailablePF"> 
+			Integer movieKey = getAvailableMovieKey(false);
+			Integer borrowerKey = getCanBorrowBorrowerKey(true);
+			
+			if (movieKey != null &amp;&amp; borrowerKey != null ) {
+				int borrower = borrowerKey.intValue();
+				int movie = movieKey.intValue();
+				setArg(0, ""+borrower);
+				setArg(1, ""+movie);
+			} else
+			{
+				setArg(0, "51");
+				setArg(1, "11");
+			}
+		</inputgenerator>
+		
+		<inputgenerator function="borrowMovieCannotBorrowPF"> 
+			Integer movieKey = getAvailableMovieKey(true);
+			Integer borrowerKey = getCanBorrowBorrowerKey(false);
+			
+			if (movieKey != null &amp;&amp; borrowerKey != null ) {
+				int borrower = borrowerKey.intValue();
+				int movie = movieKey.intValue();
+				setArg(0, ""+borrower);
+				setArg(1, ""+movie);
+			} else
+			{
+				setArg(0, "51");
+				setArg(1, "11");
+			}
+		</inputgenerator>
+		
+	</testinputgeneration>
+</SXM>

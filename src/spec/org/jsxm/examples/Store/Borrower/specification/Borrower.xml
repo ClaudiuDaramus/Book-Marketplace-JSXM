@@ -1,0 +1,132 @@
+<SXM name="Borrower" 
+	xmlns="http://www.jsxm.org/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/specification.xsd">
+
+	<dependencies>
+		<uses sxm="Movie"/>
+	</dependencies>
+
+    <!--States definition-->
+	<states>
+		<state name="noMovie"/>
+		<state name="oneMovie"/>
+	</states>
+    <!--Initial State definition-->
+	<initialState state="noMovie"/>
+    <!--Transitions definition-->
+	<transitions>
+		<transition from="noMovie" function="borrowMoviePF" to="oneMovie"/>
+		<transition from="oneMovie" function="returnMoviePF" to="noMovie"/>
+		<transition from="noMovie" function="canBorrowMoviePF" to="noMovie" />
+		<transition from="oneMovie" function="canNotBorrowMoviePF" to="oneMovie" />
+		<transition from="noMovie" function="borrowMovieNotAvailablePF" to="noMovie"/>
+		<transition from="oneMovie" function="borrowMovieCannotBorrowPF" to="oneMovie" />
+	</transitions>
+
+	<memory>
+		<declaration> int id; MovieSXM movie; </declaration>
+		<initial> id = 0; movie = null; </initial>
+		<display> movie </display>
+	</memory>
+	<methods>
+		public void setId(int id) {this.id = id;}
+	</methods>
+
+	<inputs>
+		<input name="borrowMovie">
+			<arg name="movie" type="sxm"/>
+		</input>
+		<input name="returnMovie"/>
+		<input name="canBorrow" />
+	</inputs>
+	<outputs>
+		<output name="borrowMovieOut"/>
+		<output name="returnMovieOut"/>
+		<output name="canBorrowOut" >
+			<result name="result" type="xs:boolean"/>
+		</output>
+	</outputs>
+
+	<faults>
+		<fault name="borrowMovie_NotAvailable"/>
+		<fault name="borrowMovie_CannotBorrow"/>
+	</faults>
+
+	<functions>
+
+		<function name="borrowMoviePF" input="borrowMovie" output="borrowMovieOut" xsi:type="OutputFunction">
+			<precondition>
+				<!-- 
+					borrowMovie.movie is an Sxm.
+					Send the input isAvailable() to the Sxm.
+					From the response get the value of the part named "result".
+				-->
+				((MovieSXM) (borrowMovie.get_movie())).isAvailable().result; 
+			</precondition>
+			<effect> 
+				movie = (MovieSXM) borrowMovie.get_movie();
+				movie.setBorrowed(); 
+			</effect>
+		</function>
+
+		<function name="borrowMovieNotAvailablePF" input="borrowMovie" fault="borrowMovie_NotAvailable" xsi:type="FaultFunction">
+			<precondition> 
+				!((MovieSXM) (borrowMovie.get_movie())).isAvailable().result; 
+			</precondition>
+			<effect> </effect>
+		</function>
+
+		<function name="borrowMovieCannotBorrowPF" input="borrowMovie" fault="borrowMovie_CannotBorrow" xsi:type="FaultFunction">
+			<precondition> 
+			</precondition>
+			<effect> </effect>
+		</function>
+
+
+
+		<function name="returnMoviePF" input="returnMovie" output="returnMovieOut" xsi:type="OutputFunction">
+			<effect>
+				<!-- 
+					movie is an Sxm (the one in the memory).
+					Send the input release() to the Sxm.
+					The output is ignored.
+				-->
+				movie.release(); movie = null; </effect>
+		</function>
+		<function name="canBorrowMoviePF" input="canBorrow" output="canBorrowOut" xsi:type="OutputFunction">
+			<effect>
+				canBorrowOut.result = true;
+			</effect>
+		</function>
+		
+		<function name="canNotBorrowMoviePF" input="canBorrow" output="canBorrowOut" xsi:type="OutputFunction">
+			<effect>
+				canBorrowOut.result = false;
+			</effect>
+		</function>
+	</functions>
+
+	<testinputgeneration>
+
+		<inputgenerator function="borrowMoviePF"> 
+			setArg(0, "newsxm:availableMovie");
+		</inputgenerator>
+
+		<inputgenerator function="borrowMovieNotAvailablePF"> 
+			setArg(0, "newsxm:borrowedMovie"); 
+		</inputgenerator>
+
+		<inputgenerator function="returnMoviePF"/>
+		
+		<inputgenerator function="borrowMovieCannotBorrowPF"> 
+			setArg(0, "newsxm:availableMovie"); 
+		</inputgenerator>
+		
+		
+		<!--
+		<inputgenerator function="canBorrowMovie" />
+		<inputgenerator function="canNotBorrowMovie" />
+	-->
+	</testinputgeneration>
+</SXM>

@@ -1,0 +1,45 @@
+<definitions 
+	xmlns="http://www.jsxm.org/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/definitions.xsd">
+
+	<!-- MOVIES -->
+
+	<defsxm name="borrowedMovie" sxm="MovieSXM">
+		<input name="setBorrowed"/>
+	</defsxm>
+
+	<defsxm name="availableMovie" sxm="MovieSXM"> </defsxm>
+
+
+	<!-- BORROWERS -->
+
+	<defsxm name="nomovieBorrower" sxm="BorrowerSXM"> </defsxm>
+	
+	
+<!-- 	<defsxm name="onemovieBorrower" sxm="BorrowerSXM">
+        <param name="movieTitle" type="xs:string" />
+        <input name="borrowMovie">
+            <arg type="sxm"/>
+        </input>
+    </defsxm> -->
+
+	<defsxm name="onemovieBorrower" sxm="BorrowerSXM">
+		<input name="borrowMovie">
+			<arg type="sxm" ></arg>
+		</input>
+		<input name="borrowMovie">
+			<arg type="sxm" ></arg>
+		</input>
+		<input name="borrowMovie">
+			<arg type="sxm" ></arg>
+		</input>
+		<input name="borrowMovie">
+			<arg type="sxm" ></arg>
+		</input>
+	</defsxm>
+
+</definitions>
+
+    
+    

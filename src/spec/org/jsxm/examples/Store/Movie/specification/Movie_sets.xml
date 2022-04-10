@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sets 
+	xmlns="http://www.jsxm.org/schema" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/sets.xsd">
+	
+	<!--Characterization definition-->
+	<characterization>
+		<sequence>
+			<function name="movieIsAvailablePF" />
+			<function name="movieIsAvailablePF" />
+		</sequence>
+	</characterization>
+
+	<!--StateCover definition-->
+	<statecover>
+		<sequence>
+		</sequence>
+
+		<sequence>
+			<function name="setBorrowedPF" />
+		</sequence>
+	</statecover>
+</sets>

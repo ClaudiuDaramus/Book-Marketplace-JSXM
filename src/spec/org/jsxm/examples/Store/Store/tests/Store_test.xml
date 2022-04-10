@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<set xmlns="http://www.jsxm.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/test_set.xsd" k="2">
+  <definitions />
+  <sequences>
+    <sequence name="borrowMoviePF_borrowMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">53</borrowerId>
+          <movieId type="xs:int">13</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMoviePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+        </input>
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMoviePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">53</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMoviePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">13</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_returnMoviePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+        </input>
+        <output name="returnMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieNotAvailablePF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieNotAvailablePF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+        </input>
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieNotAvailablePF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieNotAvailablePF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_returnMoviePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="returnMoviePF" />
+        <input name="returnMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+        </input>
+        <output name="returnMovieOut" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieNotAvailablePF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieNotAvailablePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">52</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovie_NotAvailable" />
+      </call>
+    </sequence>
+    <sequence name="borrowMoviePF_borrowMovieCannotBorrowPF_borrowMovieCannotBorrowPF">
+      <call>
+        <function name="borrowMoviePF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">11</movieId>
+        </input>
+        <output name="borrowMovieOut" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+      <call>
+        <function name="borrowMovieCannotBorrowPF" />
+        <input name="borrowMovie">
+          <borrowerId type="xs:int">51</borrowerId>
+          <movieId type="xs:int">12</movieId>
+        </input>
+        <output name="borrowMovie_CannotBorrow" />
+      </call>
+    </sequence>
+  </sequences>
+</set>
+

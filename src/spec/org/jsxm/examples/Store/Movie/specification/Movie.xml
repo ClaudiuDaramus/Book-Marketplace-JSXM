@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SXM name="Movie" 
+	xmlns="http://www.jsxm.org/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/specification.xsd">
+	
+	<!--States definition-->
+	<states>
+		<state name="available"/>
+		<state name="borrowed"/>
+	</states>
+
+	<!--Initial State definition-->
+	<initialState state="available"/>
+
+	<!--Transitions definition-->
+	<transitions>
+		<transition from="available" function="setBorrowedPF" to="borrowed"/>
+		<transition from="borrowed" function="releasePF" to="available"/>
+		<transition from="available" function="movieIsAvailablePF" to="available"/>
+		<transition from="borrowed" function="movieIsNotAvailablePF" to="borrowed"/>
+	</transitions>
+
+	<!--Memory definition-->
+	<memory>
+		<declaration> int id; </declaration>
+		<initial> id = 0; </initial>
+		<display> </display>
+	</memory>
+	<methods>
+		public void setId(int id) {
+			this.id = id;
+		}
+	</methods>
+
+	<!--Inputs definition-->
+	<inputs>
+		<input name="setBorrowed"/>
+		<input name="release"/>
+		<input name="isAvailable"/>
+	</inputs>
+	
+	<!--Outputs definition-->
+	<outputs>
+		<output name="setBorrowedOut"/>
+		<output name="releaseOut"/>
+		<output name="isAvailableOut">
+			<result name="result" type="xs:boolean"/>
+		</output>
+	</outputs>
+
+	<!--Functions definition-->
+	<functions>
+
+		<function name="setBorrowedPF" input="setBorrowed" output="setBorrowedOut" xsi:type="OutputFunction"/>
+		<function name="releasePF" input="release" output="releaseOut" xsi:type="OutputFunction"/>
+
+		<function name="movieIsAvailablePF" input="isAvailable" output="isAvailableOut" xsi:type="OutputFunction">
+			<effect> 
+				isAvailableOut.result = true; 
+			</effect>
+		</function>
+
+		<function name="movieIsNotAvailablePF" input="isAvailable" output="isAvailableOut" xsi:type="OutputFunction">
+			<effect> 
+				isAvailableOut.result = false; 
+			</effect>
+		</function>
+
+	</functions>
+
+	<!--Test Input generation definition-->
+	<testinputgeneration>
+		<inputgenerator function="setBorrowedPF"/>
+		<inputgenerator function="releasePF"/>
+		<inputgenerator function="movieIsAvailablePF"/>
+		<inputgenerator function="movieIsNotAvailablePF"/>
+	</testinputgeneration>
+</SXM>

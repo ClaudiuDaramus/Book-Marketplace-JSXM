@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<set xmlns="http://www.jsxm.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/test_set.xsd" k="2">
+  <definitions />
+  <sequences>
+    <sequence name="releasePF">
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="release_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsNotAvailablePF">
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_setBorrowedPF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowed_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_releasePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="release_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_movieIsNotAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_setBorrowedPF_movieIsAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_releasePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="release_Error" />
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_movieIsNotAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_setBorrowedPF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowed_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_setBorrowedPF_setBorrowedPF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowed_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_movieIsAvailablePF_releasePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="release_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_movieIsAvailablePF_movieIsNotAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_setBorrowedPF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_movieIsNotAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_setBorrowedPF_movieIsNotAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_movieIsAvailablePF_setBorrowedPF_movieIsAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_setBorrowedPF_setBorrowedPF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowed_Error" />
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_movieIsAvailablePF_releasePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="release_Error" />
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_movieIsAvailablePF_movieIsNotAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_releasePF_releasePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="release_Error" />
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_releasePF_movieIsNotAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_movieIsNotAvailablePF_setBorrowedPF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowed_Error" />
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_setBorrowedPF_releasePF_movieIsAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="movieIsAvailablePF_movieIsAvailablePF_movieIsAvailablePF_movieIsAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_setBorrowedPF_movieIsNotAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_movieIsAvailablePF_setBorrowedPF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_releasePF_setBorrowedPF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_movieIsNotAvailablePF_movieIsNotAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_setBorrowedPF_releasePF_movieIsAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_releasePF_movieIsAvailablePF_movieIsAvailablePF_movieIsAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_releasePF_movieIsAvailablePF_movieIsAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+    <sequence name="setBorrowedPF_movieIsNotAvailablePF_movieIsNotAvailablePF_releasePF_movieIsAvailablePF_movieIsAvailablePF">
+      <call>
+        <function name="setBorrowedPF" />
+        <input name="setBorrowed" />
+        <output name="setBorrowedOut" />
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsNotAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">false</result>
+        </output>
+      </call>
+      <call>
+        <function name="releasePF" />
+        <input name="release" />
+        <output name="releaseOut" />
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+      <call>
+        <function name="movieIsAvailablePF" />
+        <input name="isAvailable" />
+        <output name="isAvailableOut">
+          <result type="xs:boolean">true</result>
+        </output>
+      </call>
+    </sequence>
+  </sequences>
+</set>
+

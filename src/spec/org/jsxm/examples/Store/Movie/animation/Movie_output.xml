@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://www.jsxm.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jsxm.org/schema http://www.jsxm.org/schema/output.xsd">
+  <call>
+    <input name="isAvailable" />
+    <output name="isAvailableOut">
+      <result type="xs:boolean">true</result>
+    </output>
+  </call>
+  <call>
+    <input name="isAvailable" />
+    <output name="isAvailableOut">
+      <result type="xs:boolean">true</result>
+    </output>
+  </call>
+  <call>
+    <input name="isAvailable" />
+    <output name="isAvailableOut">
+      <result type="xs:boolean">true</result>
+    </output>
+  </call>
+  <call>
+    <input name="isAvailable" />
+    <output name="isAvailableOut">
+      <result type="xs:boolean">true</result>
+    </output>
+  </call>
+  <call>
+    <input name="release" />
+    <output name="release_Error" />
+  </call>
+  <call>
+    <input name="setBorrowed" />
+    <output name="setBorrowedOut" />
+  </call>
+  <call>
+    <input name="isAvailable" />
+    <output name="isAvailableOut">
+      <result type="xs:boolean">false</result>
+    </output>
+  </call>
+  <call>
+    <input name="setBorrowed" />
+    <output name="setBorrowed_Error" />
+  </call>
+  <call>
+    <input name="release" />
+    <output name="releaseOut" />
+  </call>
+  <call>
+    <input name="release" />
+    <output name="release_Error" />
+  </call>
+  <call>
+    <input name="release" />
+    <output name="release_Error" />
+  </call>
+  <call>
+    <input name="release" />
+    <output name="release_Error" />
+  </call>
+  <call>
+    <input name="isAvailable" />
+    <output name="isAvailableOut">
+      <result type="xs:boolean">true</result>
+    </output>
+  </call>
+</sequence>
+
