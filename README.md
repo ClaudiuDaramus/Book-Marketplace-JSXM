@@ -1,6 +1,6 @@
 # Book-Marketplace-JSXM
 
-### 1. Install Maven 3.0.5 and set it's MAVEN_HOME
+### 1. Install Maven 3.0.5 and set it's MAVEN_HOME and add it's bin to Path
 
 ### 2.Add settings.xml to C:\Users\YOUR_USERNAME\.m2
 
