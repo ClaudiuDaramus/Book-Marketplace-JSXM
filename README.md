@@ -2,7 +2,7 @@
 
 ### 1. Install Maven 3.0.5 and set it's MAVEN_HOME and add it's bin to Path
 
-### 2.Add settings.xml to C:\Users\you\.m2
+### 2.Add settings.xml to C:\\Users\\you\\.m2
 
 ### 3. Compile Project
 mvn clean jsxm:compile
